@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gokul Dairy Farm | Pure. Fresh. Farm Raised.</title>
 <meta name="description" content="Gokul Dairy Farm — healthy cows, natural farming, and quality dairy delivered fresh from our pastures to your table.">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="apple-touch-icon" href="assets/images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,500&display=swap" rel="stylesheet">
@@ -153,12 +155,6 @@ ul{ list-style:none; }
   box-shadow:0 16px 34px -14px rgba(192,138,71,.6);
 }
 .btn-clay:hover{ background:var(--clay-deep); }
-.btn-outline-dark{
-  border:1.5px solid var(--line);
-  color:var(--forest);
-  background:var(--white);
-}
-.btn-outline-dark:hover{ border-color:var(--sage-deep); background:var(--sage-light); }
 
 /* ============================================================
    NAVBAR
@@ -204,7 +200,8 @@ ul{ list-style:none; }
 .navbar.scrolled .brand-word{ color:var(--forest); }
 .navbar.scrolled .brand-word span{ color:var(--stone); }
 
-.nav-links{ display:flex; align-items:center; gap:40px; }
+/* pushed to the right edge, mirroring the brand on the left */
+.nav-links{ display:flex; align-items:center; gap:40px; margin-left:auto; }
 .nav-links a{
   font-size:.86rem; font-weight:500; letter-spacing:.02em;
   color:rgba(255,255,255,.92);
@@ -219,10 +216,25 @@ ul{ list-style:none; }
 .nav-links a:hover::after{ width:100%; }
 .navbar.scrolled .nav-links a{ color:var(--ink); }
 
+/* Contact rendered as a pill button rather than a plain link.
+   Selectors are qualified with .nav-links so they outrank the
+   generic `.navbar.scrolled .nav-links a` colour rule above. */
+.nav-links a.nav-contact{
+  padding:11px 26px;
+  border-radius:999px;
+  font-weight:600;
+  border:1.5px solid rgba(255,255,255,.55);
+  color:#fff;
+  transition:background .3s ease, border-color .3s ease, color .3s ease;
+}
+.nav-links a.nav-contact::after{ display:none; }
+.nav-links a.nav-contact:hover{ background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.9); }
+.navbar.scrolled .nav-links a.nav-contact{
+  background:var(--forest); border-color:var(--forest); color:var(--cream);
+}
+.navbar.scrolled .nav-links a.nav-contact:hover{ background:var(--forest-soft); border-color:var(--forest-soft); }
+
 .nav-cta{ display:flex; align-items:center; gap:18px; }
-.nav-cta .btn{ padding:12px 26px; font-size:.82rem; }
-.navbar:not(.scrolled) .nav-cta .btn-outline-dark{ background:transparent; border-color:rgba(255,255,255,.55); color:#fff; }
-.navbar:not(.scrolled) .nav-cta .btn-outline-dark:hover{ background:rgba(255,255,255,.14); }
 
 .nav-toggle{
   display:none; width:26px; height:20px; position:relative; flex-shrink:0;
@@ -594,7 +606,7 @@ ul{ list-style:none; }
   font-weight:800; letter-spacing:-0.015em; line-height:1.1;
   margin-bottom:20px;
 }
-.final-inner p{ font-size:1.05rem; color:rgba(255,255,255,.88); margin-bottom:34px; }
+.final-inner p{ font-size:1.05rem; color:rgba(255,255,255,.88); }
 .magnetic{ display:inline-block; }
 
 /* ============================================================
@@ -612,8 +624,6 @@ ul{ list-style:none; }
   padding-bottom:56px;
 }
 .footer-brand .brand{ margin-bottom:18px; }
-.footer-brand .brand-word{ color:var(--forest); }
-.footer-brand .brand-word span{ color:var(--stone); }
 .footer-logo{ width:200px; max-width:100%; height:auto; display:block; }
 .footer-brand p{ color:var(--stone); font-size:.9rem; line-height:1.7; max-width:280px; margin-bottom:22px; }
 .social-row{ display:flex; gap:12px; }
@@ -661,7 +671,6 @@ ul{ list-style:none; }
 @media (max-width:860px){
   .nav-links{ display:none; }
   .nav-toggle{ display:block; }
-  .nav-cta .btn-outline-dark{ display:none; }
 }
 @media (max-width:640px){
   .stats-row{ grid-template-columns:repeat(3,1fr); gap:16px; }
@@ -695,10 +704,9 @@ ul{ list-style:none; }
     <a href="#farm">Farm</a>
     <a href="#products">Products</a>
     <a href="#why">Why Gokul</a>
-    <a href="#contact">Contact</a>
+    <a href="contact.html" class="nav-contact">Contact</a>
   </nav>
   <div class="nav-cta">
-    <a href="#contact" class="btn btn-outline-dark">Get in Touch</a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -709,7 +717,7 @@ ul{ list-style:none; }
   <a href="#products">Products</a>
   <a href="#why">Why Gokul</a>
   <a href="#testimonials">Stories</a>
-  <a href="#contact" class="btn btn-clay">Get in Touch</a>
+  <a href="contact.html" class="btn btn-clay">Contact &amp; Order</a>
 </div>
 
 <!-- ============================================================
@@ -968,7 +976,6 @@ ul{ list-style:none; }
     <div class="final-inner">
       <h2>Goodness Begins at the Farm.</h2>
       <p>Discover fresh, quality dairy products from Gokul Dairy Farm.</p>
-      <a href="#contact" class="btn btn-clay magnetic">Get in Touch</a>
     </div>
   </div>
 </section>
@@ -980,14 +987,15 @@ ul{ list-style:none; }
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#" class="brand footer-brand-link">
+        <a href="#" class="brand">
           <img class="footer-logo" src="assets/images/logo-full.png" alt="Gokul Dairy Farm — pure, fresh, natural" width="720" height="693">
         </a>
         <p>Pure, honest dairy — raised the traditional way, and delivered fresh every day.</p>
         <div class="social-row">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 4h-2a4 4 0 0 0-4 4v2H7v3h2v7h3v-7h2.5l.5-3H12V8a1 1 0 0 1 1-1h2Z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M11 10l4 2-4 2Z" fill="currentColor" stroke="none"/></svg></a>
+          <a href="tel:+910000000000" aria-label="Call us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7 12.8 12.8 0 0 0 .7 2.8 2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4 12.8 12.8 0 0 0 2.8.7 2 2 0 0 1 1.7 2Z"/></svg></a>
+          <a href="mailto:hello@gokuldairyfarm.example" aria-label="Email us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Green+Valley+Road%2C+Tamil+Nadu%2C+India" target="_blank" rel="noopener" aria-label="Find the farm on the map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 10.5c0 6.5-8.5 12-8.5 12s-8.5-5.5-8.5-12a8.5 8.5 0 0 1 17 0Z"/><circle cx="12" cy="10.3" r="2.8"/></svg></a>
         </div>
       </div>
       <div class="footer-col">
@@ -1004,11 +1012,10 @@ ul{ list-style:none; }
         <ul>
           <li><a href="#testimonials">Stories</a></li>
           <li><a href="#story">Our Farm Story</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Get in Touch</h4>
         <ul>
           <li><p>Green Valley Road,<br>Tamil Nadu, India</p></li>
           <li><a href="tel:+910000000000">+91 00000 00000</a></li>
