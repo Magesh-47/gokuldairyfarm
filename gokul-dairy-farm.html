@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gokul Dairy Farm | Pure. Fresh. Farm Raised.</title>
+<meta name="description" content="Gokul Dairy Farm — healthy cows, natural farming, and quality dairy delivered fresh from our pastures to your table.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,500&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   GOKUL DAIRY FARM — DESIGN TOKENS
+   Palette: warm cream + white base, deep pasture green,
+   sage, and a clarified-butter clay-gold accent.
+   Typeface: Montserrat only (weights carry the hierarchy).
+   Signature motif: a soft rolling-hill line — the horizon
+   silhouette of the farm — used sparingly as a section seam.
+   ============================================================ */
+:root{
+  --cream:       #FBF7EE;
+  --cream-deep:  #F0E9D6;
+  --white:       #FFFFFF;
+  --forest:      #1F3D2C;
+  --forest-soft: #2E5039;
+  --sage:        #6B8F5E;
+  --sage-deep:   #4F7A50;
+  --sage-light:  #E8EFDF;
+  --clay:        #C08A47;
+  --clay-deep:   #A9743A;
+  --ink:         #29281F;
+  --stone:       #8A8271;
+  --line:        #E5DEC7;
+
+  --shadow-soft: 0 20px 50px -25px rgba(31,61,44,0.35);
+  --shadow-card: 0 14px 34px -18px rgba(41,40,31,0.22);
+
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 14px;
+
+  --container: 1280px;
+  --pad-inline: clamp(24px, 5vw, 64px);
+  --section-py: clamp(72px, 9vw, 128px);
+
+  --ease: cubic-bezier(.22,.9,.24,1);
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family:'Montserrat', sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+ul{ list-style:none; }
+:focus-visible{ outline:2px solid var(--sage-deep); outline-offset:3px; border-radius:4px; }
+
+.container{
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:var(--pad-inline);
+}
+.section{ padding-block:var(--section-py); position:relative; }
+.bg-white{ background:var(--white); }
+.bg-cream{ background:var(--cream); }
+
+/* ---------- Typography ---------- */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--clay-deep);
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:'';
+  width:18px; height:1px;
+  background:var(--clay-deep);
+  display:inline-block;
+}
+.eyebrow.on-dark{ color:#E8CFA0; }
+.eyebrow.on-dark::before{ background:#E8CFA0; }
+
+.h-display{
+  font-weight:800;
+  letter-spacing:-0.02em;
+  line-height:1.05;
+  color:var(--forest);
+}
+.h-section{
+  font-size:clamp(2rem, 3.6vw, 3.1rem);
+  font-weight:800;
+  letter-spacing:-0.015em;
+  line-height:1.12;
+  color:var(--forest);
+}
+.lede{
+  font-size:clamp(1rem, 1.1vw, 1.15rem);
+  font-weight:400;
+  line-height:1.75;
+  color:var(--stone);
+  max-width:560px;
+}
+.section-head{
+  max-width:680px;
+  margin-bottom:56px;
+}
+.section-head.center{ margin-inline:auto; text-align:center; }
+.section-head.center .lede{ margin-inline:auto; }
+
+/* ---------- Buttons ---------- */
+.btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:16px 34px;
+  border-radius:999px;
+  font-size:.92rem;
+  font-weight:600;
+  letter-spacing:.03em;
+  white-space:nowrap;
+  transition:transform .45s var(--ease), box-shadow .45s var(--ease), background .3s ease, color .3s ease;
+  will-change:transform;
+}
+.btn-primary{
+  background:var(--forest);
+  color:var(--cream);
+  box-shadow:0 14px 30px -12px rgba(31,61,44,.55);
+}
+.btn-primary:hover{ background:var(--forest-soft); box-shadow:0 18px 38px -14px rgba(31,61,44,.6); }
+.btn-ghost{
+  background:transparent;
+  color:var(--white);
+  border:1.5px solid rgba(255,255,255,.55);
+}
+.btn-ghost:hover{ background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.9); }
+.btn-clay{
+  background:var(--clay);
+  color:#2A1B08;
+  box-shadow:0 16px 34px -14px rgba(192,138,71,.6);
+}
+.btn-clay:hover{ background:var(--clay-deep); }
+.btn-outline-dark{
+  border:1.5px solid var(--line);
+  color:var(--forest);
+  background:var(--white);
+}
+.btn-outline-dark:hover{ border-color:var(--sage-deep); background:var(--sage-light); }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:22px var(--pad-inline);
+  display:flex; align-items:center; justify-content:space-between;
+  transition:background .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease);
+}
+.navbar.scrolled{
+  background:rgba(251,247,238,.86);
+  backdrop-filter:blur(14px) saturate(1.1);
+  -webkit-backdrop-filter:blur(14px) saturate(1.1);
+  padding:14px var(--pad-inline);
+  box-shadow:0 8px 30px -20px rgba(31,61,44,.4);
+}
+.brand{ display:flex; align-items:center; gap:12px; }
+.brand-mark{ width:38px; height:38px; flex-shrink:0; }
+.brand-word{
+  font-weight:800;
+  font-size:1.05rem;
+  letter-spacing:.02em;
+  color:var(--white);
+  transition:color .4s ease;
+  line-height:1.1;
+}
+.brand-word span{
+  display:block;
+  font-weight:500;
+  font-size:.62rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.75);
+}
+.navbar.scrolled .brand-word{ color:var(--forest); }
+.navbar.scrolled .brand-word span{ color:var(--stone); }
+
+.nav-links{ display:flex; align-items:center; gap:40px; }
+.nav-links a{
+  font-size:.86rem; font-weight:500; letter-spacing:.02em;
+  color:rgba(255,255,255,.92);
+  position:relative;
+  padding-bottom:4px;
+  transition:color .4s ease;
+}
+.nav-links a::after{
+  content:''; position:absolute; left:0; bottom:0; height:1.5px; width:0;
+  background:currentColor; transition:width .35s var(--ease);
+}
+.nav-links a:hover::after{ width:100%; }
+.navbar.scrolled .nav-links a{ color:var(--ink); }
+
+.nav-cta{ display:flex; align-items:center; gap:18px; }
+.nav-cta .btn{ padding:12px 26px; font-size:.82rem; }
+.navbar:not(.scrolled) .nav-cta .btn-outline-dark{ background:transparent; border-color:rgba(255,255,255,.55); color:#fff; }
+.navbar:not(.scrolled) .nav-cta .btn-outline-dark:hover{ background:rgba(255,255,255,.14); }
+
+.nav-toggle{
+  display:none; width:26px; height:20px; position:relative; flex-shrink:0;
+}
+.nav-toggle span{
+  position:absolute; left:0; right:0; height:2px; border-radius:2px;
+  background:#fff; transition:transform .35s var(--ease), opacity .3s ease, top .35s var(--ease);
+}
+.navbar.scrolled .nav-toggle span{ background:var(--forest); }
+.nav-toggle span:nth-child(1){ top:0; }
+.nav-toggle span:nth-child(2){ top:9px; }
+.nav-toggle span:nth-child(3){ top:18px; }
+.nav-toggle.open span:nth-child(1){ top:9px; transform:rotate(45deg); }
+.nav-toggle.open span:nth-child(2){ opacity:0; }
+.nav-toggle.open span:nth-child(3){ top:9px; transform:rotate(-45deg); }
+
+.mobile-menu{
+  position:fixed; inset:0; z-index:90;
+  background:var(--forest);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:28px;
+  opacity:0; visibility:hidden; transform:translateY(-12px);
+  transition:opacity .4s var(--ease), transform .4s var(--ease), visibility .4s;
+}
+.mobile-menu.open{ opacity:1; visibility:visible; transform:translateY(0); }
+.mobile-menu a{ color:var(--cream); font-size:1.4rem; font-weight:600; }
+.mobile-menu .btn{ margin-top:10px; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  color:var(--white);
+}
+.hero-media{
+  position:absolute; inset:0; z-index:0;
+  overflow:hidden;
+}
+.hero-media video, .hero-media img{
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover;
+  transform:scale(1.02);
+  animation:heroKen 26s ease-in-out infinite alternate;
+}
+@keyframes heroKen{ from{ transform:scale(1.0);} to{ transform:scale(1.09); } }
+.hero-media::after{
+  content:'';
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(20,32,22,.42) 0%, rgba(20,32,22,.18) 32%, rgba(15,26,18,.35) 62%, rgba(10,18,12,.86) 100%);
+}
+.hero-inner{
+  position:relative; z-index:1;
+  width:100%;
+  padding:0 var(--pad-inline) 108px;
+  max-width:var(--container);
+  margin-inline:auto;
+}
+.hero-eyebrow{
+  font-size:.82rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase;
+  color:#EFDBB3;
+  margin-bottom:26px;
+  display:flex; align-items:center; gap:12px;
+  opacity:0; transform:translateY(16px);
+  animation:heroUp .9s var(--ease) .3s forwards;
+}
+.hero-h1{
+  font-size:clamp(2.7rem, 7.2vw, 6rem);
+  font-weight:800;
+  letter-spacing:-0.02em;
+  line-height:1.02;
+  max-width:900px;
+  margin-bottom:26px;
+}
+.hero-h1 .line{
+  display:block;
+  overflow:hidden;
+}
+.hero-h1 .line span{
+  display:block;
+  opacity:0; transform:translateY(105%);
+  animation:heroUp .95s var(--ease) forwards;
+}
+.hero-h1 .line:nth-child(1) span{ animation-delay:.45s; }
+.hero-h1 .line:nth-child(2) span{ animation-delay:.6s; }
+.hero-sub{
+  font-size:clamp(1rem,1.2vw,1.15rem);
+  line-height:1.75;
+  max-width:560px;
+  color:rgba(255,255,255,.86);
+  margin-bottom:44px;
+  opacity:0; transform:translateY(16px);
+  animation:heroUp .9s var(--ease) .85s forwards;
+}
+.hero-actions{
+  display:flex; gap:18px; flex-wrap:wrap;
+  opacity:0; transform:translateY(16px);
+  animation:heroUp .9s var(--ease) 1.05s forwards;
+}
+@keyframes heroUp{ to{ opacity:1; transform:translateY(0); } }
+
+.scroll-cue{
+  position:absolute; left:50%; bottom:34px; z-index:1;
+  transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  color:rgba(255,255,255,.75);
+  opacity:0; animation:heroUp .9s var(--ease) 1.3s forwards;
+}
+.scroll-cue span{ font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; }
+.scroll-cue .stick{ width:1px; height:34px; background:rgba(255,255,255,.5); position:relative; overflow:hidden; }
+.scroll-cue .stick::after{
+  content:''; position:absolute; left:0; top:-100%; width:100%; height:100%;
+  background:#fff; animation:scrollDrip 2.4s ease-in-out infinite;
+}
+@keyframes scrollDrip{ 0%{top:-100%;} 60%{top:100%;} 100%{top:100%;} }
+
+.hill-seam{
+  position:absolute; left:0; right:0; bottom:-1px; z-index:2;
+  width:100%; height:auto; display:block;
+  color:var(--cream);
+  pointer-events:none;
+}
+
+/* ============================================================
+   REVEAL UTILITY
+   ============================================================ */
+.reveal{ opacity:0; transform:translateY(34px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
+.reveal.visible{ opacity:1; transform:translateY(0); }
+.reveal-scale{ opacity:0; transform:scale(.94); transition:opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal-scale.visible{ opacity:1; transform:scale(1); }
+.stagger > *{ transition-delay:calc(var(--i, 0) * 110ms); }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(32px,6vw,90px);
+  align-items:center;
+}
+.about-media{ position:relative; }
+.about-media .blob{
+  position:absolute;
+  width:78%; height:78%;
+  background:var(--sage-light);
+  border-radius:62% 38% 55% 45% / 45% 55% 42% 58%;
+  z-index:0;
+  top:-10%; left:-12%;
+}
+.about-photo{
+  position:relative; z-index:1;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-soft);
+  aspect-ratio:4/5;
+}
+.about-photo img{ width:100%; height:100%; object-fit:cover; }
+.about-text p.lede{ margin-bottom:38px; max-width:520px; }
+
+.stats-row{
+  display:grid;
+  grid-template-columns:repeat(3,auto);
+  gap:clamp(20px,4vw,46px);
+  border-top:1px solid var(--line);
+  padding-top:34px;
+}
+.stat .num{
+  font-size:clamp(2.1rem,3.4vw,2.9rem);
+  font-weight:800;
+  color:var(--forest);
+  line-height:1;
+  display:flex; align-items:baseline; gap:2px;
+}
+.stat .num .suffix{ font-size:.55em; color:var(--clay-deep); font-weight:700; }
+.stat .label{
+  margin-top:8px;
+  font-size:.8rem;
+  color:var(--stone);
+  font-weight:500;
+  letter-spacing:.02em;
+}
+
+/* ============================================================
+   FARM EXPERIENCE — horizontal scroller
+   ============================================================ */
+.exp-head{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:24px;
+  margin-bottom:44px; flex-wrap:wrap;
+}
+.exp-controls{ display:flex; gap:12px; }
+.exp-controls button{
+  width:48px; height:48px; border-radius:50%;
+  border:1.5px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--forest);
+  transition:background .3s ease, border-color .3s ease, transform .3s ease;
+}
+.exp-controls button:hover{ background:var(--sage-light); border-color:var(--sage); transform:translateY(-2px); }
+.exp-controls svg{ width:18px; height:18px; }
+
+.exp-scroll{
+  display:flex; gap:24px;
+  overflow-x:auto;
+  scroll-snap-type:x proximity;
+  padding-bottom:12px;
+  scrollbar-width:none;
+}
+.exp-scroll::-webkit-scrollbar{ display:none; }
+.exp-card{
+  flex:0 0 auto;
+  width:min(72vw, 340px);
+  scroll-snap-align:start;
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  position:relative;
+  aspect-ratio:3/4;
+  box-shadow:var(--shadow-card);
+  transition:transform .5s var(--ease);
+}
+.exp-card:nth-child(even){ margin-top:38px; }
+.exp-card:hover{ transform:translateY(-8px); }
+.exp-card img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .8s var(--ease);
+}
+.exp-card:hover img{ transform:scale(1.08); }
+.exp-card::before{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(20,30,20,0) 45%, rgba(15,24,16,.78) 100%);
+  z-index:1;
+}
+.exp-cap{
+  position:absolute; left:22px; right:22px; bottom:20px; z-index:2;
+  color:#fff;
+}
+.exp-cap .n{ font-size:.72rem; letter-spacing:.18em; color:#E8CFA0; font-weight:600; margin-bottom:6px; }
+.exp-cap .t{ font-size:1.15rem; font-weight:700; }
+
+/* ============================================================
+   PRODUCTS
+   ============================================================ */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:28px;
+}
+.product-card{
+  background:var(--white);
+  border-radius:var(--radius-md);
+  padding:18px;
+  box-shadow:var(--shadow-card);
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.product-card:hover{ transform:translateY(-10px); box-shadow:0 26px 50px -22px rgba(41,40,31,.28); }
+.product-media{
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+  aspect-ratio:1/1;
+  margin-bottom:18px;
+}
+.product-media img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .7s var(--ease);
+}
+.product-card:hover .product-media img{ transform:scale(1.06); }
+.product-card h3{ font-size:1.1rem; font-weight:700; color:var(--forest); margin-bottom:6px; }
+.product-card p{ font-size:.86rem; color:var(--stone); line-height:1.55; }
+
+/* ============================================================
+   WHY GOKUL
+   ============================================================ */
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  background:var(--line);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+}
+.why-card{
+  background:var(--white);
+  padding:44px 36px;
+  transition:background .4s ease;
+}
+.why-card:hover{ background:var(--sage-light); }
+.why-icon{
+  width:46px; height:46px;
+  margin-bottom:22px;
+  color:var(--sage-deep);
+}
+.why-icon svg{ width:100%; height:100%; }
+.why-card h3{ font-size:1.05rem; font-weight:700; color:var(--forest); margin-bottom:10px; }
+.why-card p{ font-size:.88rem; color:var(--stone); line-height:1.6; }
+
+/* ============================================================
+   FARM STORY / VIDEO
+   ============================================================ */
+.story-head{ text-align:center; max-width:680px; margin:0 auto 48px; }
+.story-frame{
+  position:relative;
+  max-width:1040px; margin-inline:auto;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  aspect-ratio:16/9;
+  box-shadow:var(--shadow-soft);
+}
+.story-frame video, .story-frame img{
+  width:100%; height:100%; object-fit:cover;
+  transform:scale(1.05);
+  transition:transform 1.2s var(--ease);
+}
+.story-frame .play-btn{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  z-index:2;
+  background:transparent;
+}
+.play-circle{
+  width:88px; height:88px; border-radius:50%;
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  border:1.5px solid rgba(255,255,255,.65);
+  display:flex; align-items:center; justify-content:center;
+  transition:transform .45s var(--ease), background .3s ease;
+}
+.story-frame:hover .play-circle{ transform:scale(1.08); background:rgba(255,255,255,.28); }
+.play-circle svg{ width:26px; height:26px; color:#fff; margin-left:3px; }
+.story-frame::after{
+  content:''; position:absolute; inset:0; z-index:1;
+  background:linear-gradient(180deg, rgba(10,18,10,.12) 0%, rgba(8,14,8,.42) 100%);
+}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testi-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:26px;
+}
+.testi-card{
+  background:var(--white);
+  border-radius:var(--radius-md);
+  padding:32px 26px;
+  border:1px solid var(--line);
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.testi-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-card); }
+.testi-quote-mark{ color:var(--clay); font-size:2.4rem; font-weight:800; line-height:1; margin-bottom:6px; font-family:Georgia,serif; }
+.testi-card p.quote{ font-size:.92rem; color:var(--ink); line-height:1.65; margin-bottom:22px; min-height:96px; }
+.testi-person{ display:flex; align-items:center; gap:12px; }
+.testi-person img{ width:46px; height:46px; border-radius:50%; object-fit:cover; }
+.testi-person .name{ font-size:.9rem; font-weight:700; color:var(--forest); }
+.testi-person .loc{ font-size:.76rem; color:var(--stone); }
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final-cta{
+  position:relative;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  margin-inline:var(--pad-inline);
+  min-height:520px;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  color:#fff;
+}
+.final-cta img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+}
+.final-cta::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(15,26,17,.35) 0%, rgba(12,20,13,.72) 100%);
+}
+.final-inner{ position:relative; z-index:1; max-width:640px; padding:0 24px; }
+.final-inner h2{
+  font-size:clamp(2.1rem,4.6vw,3.4rem);
+  font-weight:800; letter-spacing:-0.015em; line-height:1.1;
+  margin-bottom:20px;
+}
+.final-inner p{ font-size:1.05rem; color:rgba(255,255,255,.88); margin-bottom:34px; }
+.magnetic{ display:inline-block; }
+
+/* ============================================================
+   FOOTER  (kept light — no dark section)
+   ============================================================ */
+.footer{
+  background:var(--cream-deep);
+  border-top:1px solid var(--line);
+  padding-top:clamp(56px,7vw,90px);
+}
+.footer-top{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1.1fr;
+  gap:40px;
+  padding-bottom:56px;
+}
+.footer-brand .brand{ margin-bottom:18px; }
+.footer-brand .brand-word{ color:var(--forest); }
+.footer-brand .brand-word span{ color:var(--stone); }
+.footer-brand p{ color:var(--stone); font-size:.9rem; line-height:1.7; max-width:280px; margin-bottom:22px; }
+.social-row{ display:flex; gap:12px; }
+.social-row a{
+  width:38px; height:38px; border-radius:50%;
+  border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--forest);
+  transition:background .3s ease, border-color .3s ease, transform .3s ease;
+}
+.social-row a:hover{ background:var(--sage-light); border-color:var(--sage); transform:translateY(-3px); }
+.social-row svg{ width:16px; height:16px; }
+
+.footer-col h4{
+  font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--forest); font-weight:700; margin-bottom:20px;
+}
+.footer-col ul{ display:flex; flex-direction:column; gap:12px; }
+.footer-col a, .footer-col p{ color:var(--stone); font-size:.9rem; }
+.footer-col a{ transition:color .3s ease; }
+.footer-col a:hover{ color:var(--sage-deep); }
+.footer-col li p{ line-height:1.6; }
+
+.footer-bottom{
+  border-top:1px solid var(--line);
+  padding:24px 0 32px;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:12px;
+  font-size:.8rem; color:var(--stone);
+}
+.footer-bottom a{ color:var(--stone); }
+.footer-bottom a:hover{ color:var(--sage-deep); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1024px){
+  .about-grid{ grid-template-columns:1fr; }
+  .about-media{ order:-1; }
+  .product-grid{ grid-template-columns:repeat(2,1fr); }
+  .testi-grid{ grid-template-columns:repeat(2,1fr); }
+  .why-grid{ grid-template-columns:repeat(2,1fr); }
+  .footer-top{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:860px){
+  .nav-links{ display:none; }
+  .nav-toggle{ display:block; }
+  .nav-cta .btn-outline-dark{ display:none; }
+}
+@media (max-width:640px){
+  .stats-row{ grid-template-columns:repeat(3,1fr); gap:16px; }
+  .product-grid{ grid-template-columns:1fr 1fr; gap:16px; }
+  .why-grid{ grid-template-columns:1fr; }
+  .testi-grid{ grid-template-columns:1fr; }
+  .footer-top{ grid-template-columns:1fr; gap:36px; }
+  .final-cta{ margin-inline:16px; min-height:440px; }
+  .exp-controls{ display:none; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+  .reveal, .reveal-scale{ opacity:1 !important; transform:none !important; }
+  .hero-h1 .line span, .hero-eyebrow, .hero-sub, .hero-actions, .scroll-cue{ opacity:1 !important; transform:none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header class="navbar" id="navbar">
+  <a href="#" class="brand">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="16" r="7" stroke="currentColor" stroke-width="1.6" style="color:#E8CFA0"/>
+      <path d="M4 30C9 22 15 22 20 25C25 22 31 22 36 30" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="color:#8FB37E"/>
+    </svg>
+    <span class="brand-word">GOKUL<span>Dairy Farm</span></span>
+  </a>
+  <nav class="nav-links">
+    <a href="#about">About</a>
+    <a href="#farm">Farm</a>
+    <a href="#products">Products</a>
+    <a href="#why">Why Gokul</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-cta">
+    <a href="#contact" class="btn btn-outline-dark">Get in Touch</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#farm">Farm</a>
+  <a href="#products">Products</a>
+  <a href="#why">Why Gokul</a>
+  <a href="#testimonials">Stories</a>
+  <a href="#contact" class="btn btn-clay">Get in Touch</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-media">
+    <video autoplay muted loop playsinline
+      poster="assets/images/hero-poster.jpg">
+      <source src="assets/videos/hero-pasture.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">PURE &nbsp;•&nbsp; FRESH &nbsp;•&nbsp; FARM RAISED</div>
+    <h1 class="hero-h1">
+      <span class="line"><span>From Our Farm,</span></span>
+      <span class="line"><span>Naturally.</span></span>
+    </h1>
+    <p class="hero-sub">Every morning begins the same way at Gokul Dairy Farm — healthy cows, open pasture, and milk that travels from udder to home the same day. Three generations of care, none of it rushed.</p>
+    <div class="hero-actions">
+      <a href="#farm" class="btn btn-primary magnetic">Explore Our Farm</a>
+      <a href="#products" class="btn btn-ghost magnetic">Our Dairy Products</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="stick"></div></div>
+  <svg class="hill-seam" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M0,48 C 220,10 380,80 620,58 C 860,36 1000,4 1220,30 C 1330,42 1400,52 1440,46 L1440,90 L0,90 Z"/>
+  </svg>
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section class="section bg-cream" id="about">
+  <div class="container about-grid">
+    <div class="about-media reveal-scale" data-reveal>
+      <div class="blob" aria-hidden="true"></div>
+      <div class="about-photo">
+        <img src="assets/images/about-pasture.jpg" alt="Cows grazing on Gokul Dairy Farm's open green pasture under a clear sky" loading="lazy">
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="eyebrow reveal" data-reveal>Our Story</div>
+      <h2 class="h-section reveal" data-reveal style="margin-bottom:22px;">Rooted in Tradition,<br>Raised with Care</h2>
+      <p class="lede reveal" data-reveal>For over two decades, Gokul Dairy Farm has followed one simple principle: happy cows make honest milk. Our herd grazes freely across open pasture, drinks clean water, and is looked after by farmers who know every animal by name. Nothing is rushed, nothing is masked — just fresh, wholesome dairy, the way it was always meant to be.</p>
+      <div class="stats-row reveal" data-reveal>
+        <div class="stat">
+          <div class="num"><span class="count" data-target="25">0</span><span class="suffix">+</span></div>
+          <div class="label">Years of Farming</div>
+        </div>
+        <div class="stat">
+          <div class="num"><span class="count" data-target="100">0</span><span class="suffix">+</span></div>
+          <div class="label">Healthy Cows</div>
+        </div>
+        <div class="stat">
+          <div class="num"><span class="count" data-target="100">0</span><span class="suffix">%</span></div>
+          <div class="label">Farm Fresh</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FARM EXPERIENCE
+     ============================================================ -->
+<section class="section bg-white" id="farm">
+  <div class="container">
+    <div class="exp-head">
+      <div class="section-head" style="margin-bottom:0;">
+        <div class="eyebrow reveal" data-reveal>A Day at Gokul</div>
+        <h2 class="h-section reveal" data-reveal>The Farm Experience</h2>
+      </div>
+      <div class="exp-controls">
+        <button id="expPrev" aria-label="Scroll left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button id="expNext" aria-label="Scroll right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="exp-scroll" id="expScroll">
+      <div class="exp-card reveal" data-reveal>
+        <img src="assets/images/exp-01-cows-grazing.jpg" alt="Cows grazing peacefully in a sunny pasture" loading="lazy">
+        <div class="exp-cap"><div class="n">01</div><div class="t">Cows Grazing</div></div>
+      </div>
+      <div class="exp-card reveal" data-reveal>
+        <img src="assets/images/exp-02-morning-milking.jpg" alt="Morning milking by hand at the farm" loading="lazy">
+        <div class="exp-cap"><div class="n">02</div><div class="t">Morning Milking</div></div>
+      </div>
+      <div class="exp-card reveal" data-reveal>
+        <img src="assets/images/exp-03-green-pastures.jpg" alt="Green pastures where the herd roams" loading="lazy">
+        <div class="exp-cap"><div class="n">03</div><div class="t">Green Pastures</div></div>
+      </div>
+      <div class="exp-card reveal" data-reveal>
+        <img src="assets/images/exp-04-farmers-at-work.jpg" alt="A farmer caring for cows in the barn" loading="lazy">
+        <div class="exp-cap"><div class="n">04</div><div class="t">Farmers at Work</div></div>
+      </div>
+      <div class="exp-card reveal" data-reveal>
+        <img src="assets/images/exp-05-milk-collection.jpg" alt="Fresh milk being collected and poured" loading="lazy">
+        <div class="exp-cap"><div class="n">05</div><div class="t">Fresh Milk Collection</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRODUCTS
+     ============================================================ -->
+<section class="section bg-cream" id="products">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow reveal" data-reveal style="justify-content:center;">From Farm to Table</div>
+      <h2 class="h-section reveal" data-reveal>Our Dairy Products</h2>
+      <p class="lede reveal" data-reveal>Everything we make begins with the same glass of fresh milk — nothing added, nothing hurried.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card reveal" data-reveal>
+        <div class="product-media"><img src="assets/images/product-milk.jpg" alt="Bottle of fresh Gokul Dairy Farm milk" loading="lazy"></div>
+        <h3>Fresh Milk</h3>
+        <p>Chilled within hours of milking — pure, creamy, and unadulterated.</p>
+      </div>
+      <div class="product-card reveal" data-reveal>
+        <div class="product-media"><img src="assets/images/product-curd.jpg" alt="Bowl of fresh homemade curd" loading="lazy"></div>
+        <h3>Curd</h3>
+        <p>Set the traditional way — thick, cool, and naturally tangy.</p>
+      </div>
+      <div class="product-card reveal" data-reveal>
+        <div class="product-media"><img src="assets/images/product-paneer.jpg" alt="Fresh soft paneer cottage cheese" loading="lazy"></div>
+        <h3>Paneer</h3>
+        <p>Soft, fresh-pressed cottage cheese, made in small batches daily.</p>
+      </div>
+      <div class="product-card reveal" data-reveal>
+        <div class="product-media"><img src="assets/images/product-ghee.jpg" alt="Jar of golden, slow-simmered ghee" loading="lazy"></div>
+        <h3>Ghee</h3>
+        <p>Slow-simmered the traditional way — golden, rich, and aromatic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY GOKUL
+     ============================================================ -->
+<section class="section bg-white" id="why">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow reveal" data-reveal style="justify-content:center;">Why Choose Us</div>
+      <h2 class="h-section reveal" data-reveal>Why Gokul?</h2>
+    </div>
+    <div class="why-grid reveal-scale" data-reveal>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6 3-9 8-9-1 6-3 9-8 9Z"/><path d="M12 21c0-8-4-12-9-13 0 7 3 12 9 13Z"/></svg></div>
+        <h3>Naturally Nourished Cows</h3>
+        <p>Our herd grazes on open pasture and eats a natural diet — no shortcuts, no additives.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2.5 3.5 5 6.8 5 10a5 5 0 0 1-10 0c0-3.2 2.5-6.5 5-10Z"/><path d="M9.5 15.5l1.6 1.6 3.4-3.6"/></svg></div>
+        <h3>Hygienic Milking</h3>
+        <p>Clean equipment and gentle technique, followed the same way at every milking.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M4.2 11h-2M21.8 11h-2M6 6.5 4.6 5.1M18 6.5l1.4-1.4"/><path d="M4 16a8 8 0 0 1 16 0"/><path d="M2 20h20"/></svg></div>
+        <h3>Fresh Every Day</h3>
+        <p>Milked in the morning, chilled by noon, and on your table the same evening.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3Z"/><path d="M9 12l2.2 2.2L15.5 9.5"/></svg></div>
+        <h3>Quality You Can Trust</h3>
+        <p>Every batch is checked for purity and freshness before it ever leaves the farm.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></div>
+        <h3>Caring Farmers</h3>
+        <p>Our farmers know every cow in the herd — by name, and by nature.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5"/><path d="M18 3v4h-4"/><path d="M20 12a8 8 0 0 1-14 5"/><path d="M6 21v-4h4"/></svg></div>
+        <h3>Sustainable Farming</h3>
+        <p>Practices that give back to the land as much as they take from it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FARM STORY / VIDEO
+     ============================================================ -->
+<section class="section bg-cream" id="story">
+  <div class="container">
+    <div class="story-head">
+      <div class="eyebrow reveal" data-reveal style="justify-content:center;">Behind the Milk</div>
+      <h2 class="h-section reveal" data-reveal>See Where Your Milk Comes From.</h2>
+      <p class="lede reveal" data-reveal style="margin-top:14px;">Take a quiet walk through our pastures — the same fields your milk starts in, every single morning.</p>
+    </div>
+    <div class="story-frame reveal-scale" data-reveal data-parallax>
+      <video muted loop playsinline preload="metadata"
+        poster="assets/images/farm-story-poster.jpg">
+        <source src="assets/videos/farm-story.mp4" type="video/mp4">
+      </video>
+      <button class="play-btn" aria-label="Play farm story video">
+        <span class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="section bg-white" id="testimonials">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow reveal" data-reveal style="justify-content:center;">What Families Say</div>
+      <h2 class="h-section reveal" data-reveal>Trusted by Families Like Yours</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal" data-reveal>
+        <div class="testi-quote-mark">&ldquo;</div>
+        <p class="quote">The taste of real milk again — my children can actually tell the difference from what we had before.</p>
+        <div class="testi-person">
+          <img src="assets/images/testimonials/anjali-menon.jpg" alt="Portrait of Anjali Menon" loading="lazy">
+          <div><div class="name">Anjali Menon</div><div class="loc">Coimbatore</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal" data-reveal>
+        <div class="testi-quote-mark">&ldquo;</div>
+        <p class="quote">We've switched entirely to Gokul for our dairy. The curd genuinely tastes like my grandmother used to make.</p>
+        <div class="testi-person">
+          <img src="assets/images/testimonials/rakesh-patil.jpg" alt="Portrait of Rakesh Patil" loading="lazy">
+          <div><div class="name">Rakesh Patil</div><div class="loc">Pune</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal" data-reveal>
+        <div class="testi-quote-mark">&ldquo;</div>
+        <p class="quote">Fresh, honest dairy delivered with real care, every single morning without fail. It's rare to find that anymore.</p>
+        <div class="testi-person">
+          <img src="assets/images/testimonials/fatima-sheikh.jpg" alt="Portrait of Fatima Sheikh" loading="lazy">
+          <div><div class="name">Fatima Sheikh</div><div class="loc">Ahmedabad</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal" data-reveal>
+        <div class="testi-quote-mark">&ldquo;</div>
+        <p class="quote">You can genuinely taste that the cows are well cared for. Worth every visit to the farm store.</p>
+        <div class="testi-person">
+          <img src="assets/images/testimonials/vikram-nair.jpg" alt="Portrait of Vikram Nair" loading="lazy">
+          <div><div class="name">Vikram Nair</div><div class="loc">Kochi</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+     ============================================================ -->
+<section class="section bg-cream" style="padding-block:80px;">
+  <div class="final-cta reveal-scale" data-reveal>
+    <img src="assets/images/cta-golden-hour.jpg" alt="Cows grazing at Gokul Dairy Farm during golden hour" loading="lazy">
+    <div class="final-inner">
+      <h2>Goodness Begins at the Farm.</h2>
+      <p>Discover fresh, quality dairy products from Gokul Dairy Farm.</p>
+      <a href="#contact" class="btn btn-clay magnetic">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="brand">
+          <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="16" r="7" stroke="currentColor" stroke-width="1.6" style="color:#C08A47"/>
+            <path d="M4 30C9 22 15 22 20 25C25 22 31 22 36 30" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="color:#6B8F5E"/>
+          </svg>
+          <span class="brand-word">GOKUL<span>Dairy Farm</span></span>
+        </a>
+        <p>Pure, honest dairy — raised the traditional way, and delivered fresh every day.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 4h-2a4 4 0 0 0-4 4v2H7v3h2v7h3v-7h2.5l.5-3H12V8a1 1 0 0 1 1-1h2Z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M11 10l4 2-4 2Z" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#farm">Farm</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#why">Why Gokul</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#testimonials">Stories</a></li>
+          <li><a href="#story">Our Farm Story</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul>
+          <li><p>Green Valley Road,<br>Tamil Nadu, India</p></li>
+          <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+          <li><a href="mailto:hello@gokuldairyfarm.example">hello@gokuldairyfarm.example</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Gokul Dairy Farm. All rights reserved.</span>
+      <span>Made with care, on the farm.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Navbar scroll state ---------- */
+  var navbar = document.getElementById('navbar');
+  function onScroll(){
+    if(window.scrollY > 40){ navbar.classList.add('scrolled'); }
+    else{ navbar.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- Mobile menu ---------- */
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', function(){
+    toggle.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ toggle.classList.remove('open'); menu.classList.remove('open'); });
+  });
+
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.18, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(function(el, i){
+      el.style.setProperty('--i', i % 6);
+      io.observe(el);
+    });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  /* ---------- Number counters ---------- */
+  var counters = document.querySelectorAll('.count');
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    var duration = 1400;
+    var start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target);
+      if(progress < 1){ requestAnimationFrame(step); }
+      else{ el.textContent = target; }
+    }
+    if(reduceMotion){ el.textContent = target; return; }
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ animateCount(entry.target); cio.unobserve(entry.target); }
+      });
+    }, {threshold:.6});
+    counters.forEach(function(c){ cio.observe(c); });
+  } else {
+    counters.forEach(function(c){ c.textContent = c.getAttribute('data-target'); });
+  }
+
+  /* ---------- Horizontal scroller controls ---------- */
+  var scroller = document.getElementById('expScroll');
+  var prev = document.getElementById('expPrev');
+  var next = document.getElementById('expNext');
+  function scrollBy(dir){
+    var card = scroller.querySelector('.exp-card');
+    var amount = card ? card.getBoundingClientRect().width + 24 : 320;
+    scroller.scrollBy({left: dir * amount, behavior: reduceMotion ? 'auto' : 'smooth'});
+  }
+  if(prev) prev.addEventListener('click', function(){ scrollBy(-1); });
+  if(next) next.addEventListener('click', function(){ scrollBy(1); });
+
+  /* ---------- Subtle parallax on the farm-story frame ---------- */
+  var parallaxEl = document.querySelector('[data-parallax]');
+  if(parallaxEl && !reduceMotion){
+    var media = parallaxEl.querySelector('video, img');
+    window.addEventListener('scroll', function(){
+      var rect = parallaxEl.getBoundingClientRect();
+      var vh = window.innerHeight;
+      if(rect.top < vh && rect.bottom > 0){
+        var progress = (vh - rect.top) / (vh + rect.height);
+        var translate = (progress - 0.5) * 26;
+        media.style.transform = 'translateY(' + translate.toFixed(1) + 'px) scale(1.05)';
+      }
+    }, {passive:true});
+  }
+
+  /* ---------- Play button (decorative — swaps poster for autoplay loop) ---------- */
+  var playBtn = document.querySelector('.play-btn');
+  if(playBtn){
+    playBtn.addEventListener('click', function(){
+      var vid = playBtn.parentElement.querySelector('video');
+      if(vid){
+        vid.setAttribute('autoplay','');
+        vid.play().catch(function(){});
+        playBtn.style.opacity = '0';
+        playBtn.style.pointerEvents = 'none';
+      }
+    });
+  }
+
+  /* ---------- Magnetic buttons ---------- */
+  if(!reduceMotion && matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        var x = e.clientX - r.left - r.width/2;
+        var y = e.clientY - r.top - r.height/2;
+        btn.style.transform = 'translate(' + (x*0.18).toFixed(1) + 'px,' + (y*0.28).toFixed(1) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){ btn.style.transform = 'translate(0,0)'; });
+    });
+  }
+
+  /* ---------- Footer year ---------- */
+  var yearEl = document.getElementById('year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+
+})();
+</script>
+</body>
+</html>
