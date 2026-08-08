@@ -177,7 +177,14 @@ ul{ list-style:none; }
   box-shadow:0 8px 30px -20px rgba(31,61,44,.4);
 }
 .brand{ display:flex; align-items:center; gap:12px; }
-.brand-mark{ width:38px; height:38px; flex-shrink:0; }
+.brand-mark{
+  height:40px; width:auto; flex-shrink:0;
+  display:block;
+  /* the mark is dark artwork; over the hero video a soft lift keeps it readable */
+  filter:drop-shadow(0 1px 4px rgba(0,0,0,.28));
+  transition:filter .4s ease;
+}
+.navbar.scrolled .brand-mark{ filter:none; }
 .brand-word{
   font-weight:800;
   font-size:1.05rem;
@@ -533,26 +540,9 @@ ul{ list-style:none; }
   transform:scale(1.05);
   transition:transform 1.2s var(--ease);
 }
-.story-frame .play-btn{
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  z-index:2;
-  background:transparent;
-}
-.play-circle{
-  width:88px; height:88px; border-radius:50%;
-  background:rgba(255,255,255,.18);
-  backdrop-filter:blur(6px);
-  -webkit-backdrop-filter:blur(6px);
-  border:1.5px solid rgba(255,255,255,.65);
-  display:flex; align-items:center; justify-content:center;
-  transition:transform .45s var(--ease), background .3s ease;
-}
-.story-frame:hover .play-circle{ transform:scale(1.08); background:rgba(255,255,255,.28); }
-.play-circle svg{ width:26px; height:26px; color:#fff; margin-left:3px; }
 .story-frame::after{
   content:''; position:absolute; inset:0; z-index:1;
-  background:linear-gradient(180deg, rgba(10,18,10,.12) 0%, rgba(8,14,8,.42) 100%);
+  background:linear-gradient(180deg, rgba(10,18,10,.05) 0%, rgba(8,14,8,.18) 100%);
 }
 
 /* ============================================================
@@ -624,6 +614,7 @@ ul{ list-style:none; }
 .footer-brand .brand{ margin-bottom:18px; }
 .footer-brand .brand-word{ color:var(--forest); }
 .footer-brand .brand-word span{ color:var(--stone); }
+.footer-logo{ width:200px; max-width:100%; height:auto; display:block; }
 .footer-brand p{ color:var(--stone); font-size:.9rem; line-height:1.7; max-width:280px; margin-bottom:22px; }
 .social-row{ display:flex; gap:12px; }
 .social-row a{
@@ -696,10 +687,7 @@ ul{ list-style:none; }
      ============================================================ -->
 <header class="navbar" id="navbar">
   <a href="#" class="brand">
-    <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
-      <circle cx="20" cy="16" r="7" stroke="currentColor" stroke-width="1.6" style="color:#E8CFA0"/>
-      <path d="M4 30C9 22 15 22 20 25C25 22 31 22 36 30" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="color:#8FB37E"/>
-    </svg>
+    <img class="brand-mark" src="assets/images/logo-mark.png" alt="" width="512" height="436">
     <span class="brand-word">GOKUL<span>Dairy Farm</span></span>
   </a>
   <nav class="nav-links">
@@ -917,13 +905,10 @@ ul{ list-style:none; }
       <p class="lede reveal" data-reveal style="margin-top:14px;">Take a quiet walk through our pastures — the same fields your milk starts in, every single morning.</p>
     </div>
     <div class="story-frame reveal-scale" data-reveal data-parallax>
-      <video muted loop playsinline preload="metadata"
+      <video autoplay muted loop playsinline preload="auto"
         poster="assets/images/farm-story-poster.jpg">
         <source src="assets/videos/farm-story.mp4" type="video/mp4">
       </video>
-      <button class="play-btn" aria-label="Play farm story video">
-        <span class="play-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-      </button>
     </div>
   </div>
 </section>
@@ -995,12 +980,8 @@ ul{ list-style:none; }
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#" class="brand">
-          <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
-            <circle cx="20" cy="16" r="7" stroke="currentColor" stroke-width="1.6" style="color:#C08A47"/>
-            <path d="M4 30C9 22 15 22 20 25C25 22 31 22 36 30" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="color:#6B8F5E"/>
-          </svg>
-          <span class="brand-word">GOKUL<span>Dairy Farm</span></span>
+        <a href="#" class="brand footer-brand-link">
+          <img class="footer-logo" src="assets/images/logo-full.png" alt="Gokul Dairy Farm — pure, fresh, natural" width="720" height="693">
         </a>
         <p>Pure, honest dairy — raised the traditional way, and delivered fresh every day.</p>
         <div class="social-row">
@@ -1140,18 +1121,20 @@ ul{ list-style:none; }
     }, {passive:true});
   }
 
-  /* ---------- Play button (decorative — swaps poster for autoplay loop) ---------- */
-  var playBtn = document.querySelector('.play-btn');
-  if(playBtn){
-    playBtn.addEventListener('click', function(){
-      var vid = playBtn.parentElement.querySelector('video');
-      if(vid){
-        vid.setAttribute('autoplay','');
-        vid.play().catch(function(){});
-        playBtn.style.opacity = '0';
-        playBtn.style.pointerEvents = 'none';
-      }
-    });
+  /* ---------- Farm story video: autoplay, and only while on screen ---------- */
+  var storyVideo = document.querySelector('.story-frame video');
+  if(storyVideo){
+    var tryPlay = function(){ var p = storyVideo.play(); if(p) p.catch(function(){}); };
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting) tryPlay();
+          else storyVideo.pause();
+        });
+      }, {threshold: 0.25}).observe(storyVideo);
+    } else {
+      tryPlay();
+    }
   }
 
   /* ---------- Magnetic buttons ---------- */
