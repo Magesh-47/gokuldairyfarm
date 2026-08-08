@@ -12,7 +12,7 @@ assets/
 └── js/       scripts, if the inline <script> is ever split out
 ```
 
-Reference from `gokul-dairy-farm.html` with relative paths, e.g.
+Reference from `index.html` with relative paths, e.g.
 `<img src="assets/images/about-pasture.jpg" alt="...">`.
 
 ## Remote assets currently in use

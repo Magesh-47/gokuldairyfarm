@@ -9,7 +9,7 @@ assets/
 └── videos/   hero + story background videos (.mp4)
 ```
 
-Referenced from `gokul-dairy-farm.html` with relative paths, e.g.
+Referenced from `index.html` with relative paths, e.g.
 `<img src="assets/images/about-pasture.jpg" alt="...">`.
 
 ## Logo
