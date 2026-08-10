@@ -69,4 +69,4 @@ the `src`/`poster` attribute. Suggested names below.
 - Prefer `.webp` over `.jpg` for photos where browser support allows — the
   same crops typically land 25–35% smaller.
 - Pexels content is free for commercial use without attribution, but confirm
-  the license on each photo page before shipping to production.
+  the license on each page before shipping to production.
