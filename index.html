@@ -484,7 +484,7 @@ ul{ list-style:none; }
    ============================================================ */
 .product-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:28px;
 }
 .product-card{
@@ -663,7 +663,6 @@ ul{ list-style:none; }
 @media (max-width:1024px){
   .about-grid{ grid-template-columns:1fr; }
   .about-media{ order:-1; }
-  .product-grid{ grid-template-columns:repeat(2,1fr); }
   .testi-grid{ grid-template-columns:repeat(2,1fr); }
   .why-grid{ grid-template-columns:repeat(2,1fr); }
   .footer-top{ grid-template-columns:1fr 1fr; }
@@ -674,7 +673,7 @@ ul{ list-style:none; }
 }
 @media (max-width:640px){
   .stats-row{ grid-template-columns:repeat(3,1fr); gap:16px; }
-  .product-grid{ grid-template-columns:1fr 1fr; gap:16px; }
+  .product-grid{ grid-template-columns:1fr; gap:16px; }
   .why-grid{ grid-template-columns:1fr; }
   .testi-grid{ grid-template-columns:1fr; }
   .footer-top{ grid-template-columns:1fr; gap:36px; }
