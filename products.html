@@ -317,7 +317,7 @@ ul{ list-style:none; }
    ============================================================ */
 .pd-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:32px;
 }
 .pd-card{
@@ -333,6 +333,9 @@ ul{ list-style:none; }
 .pd-media{ aspect-ratio:16/10; overflow:hidden; }
 .pd-media img{ width:100%; height:100%; object-fit:cover; transition:transform .7s var(--ease); }
 .pd-card:hover .pd-media img{ transform:scale(1.06); }
+.pd-media.placeholder{ display:flex; align-items:center; justify-content:center; background:var(--sage-light); }
+.pd-media.placeholder svg{ width:34%; height:34%; color:var(--sage-deep); transition:transform .7s var(--ease); }
+.pd-card:hover .pd-media.placeholder svg{ transform:scale(1.08); }
 .pd-body{ padding:clamp(24px,3vw,32px) clamp(24px,3vw,34px) 30px; display:flex; flex-direction:column; flex:1; }
 .pd-body h3{ font-size:1.4rem; font-weight:800; color:var(--forest); margin-bottom:10px; letter-spacing:-0.01em; }
 .pd-desc{ font-size:.92rem; color:var(--stone); line-height:1.7; margin-bottom:20px; }
@@ -462,6 +465,7 @@ ul{ list-style:none; }
    RESPONSIVE
    ============================================================ */
 @media (max-width:1024px){
+  .pd-grid{ grid-template-columns:repeat(2,1fr); }
   .footer-top{ grid-template-columns:1fr 1fr; }
 }
 @media (max-width:860px){
@@ -538,7 +542,7 @@ ul{ list-style:none; }
     <div class="section-head center">
       <div class="eyebrow reveal" data-reveal>Our Range</div>
       <h2 class="h-section reveal" data-reveal>The Full Gokul Range</h2>
-      <p class="lede reveal" data-reveal>Four products, each made the unhurried way — straight from the herd to your kitchen.</p>
+      <p class="lede reveal" data-reveal>Three products, each made the unhurried way — straight from our fields and herd to your kitchen.</p>
     </div>
 
     <div class="pd-grid">
@@ -560,16 +564,16 @@ ul{ list-style:none; }
       </div>
 
       <div class="pd-card reveal" data-reveal>
-        <div class="pd-media"><img src="assets/images/product-curd.jpg" alt="Bowl of fresh homemade curd" loading="lazy"></div>
+        <div class="pd-media"><img src="assets/images/product-ghee.jpg" alt="Jar of golden, slow-simmered ghee" loading="lazy"></div>
         <div class="pd-body">
-          <h3>Curd</h3>
-          <p class="pd-desc">Set the traditional way in small batches — thick, cool, and naturally tangy, the way curd is meant to taste.</p>
+          <h3>Ghee</h3>
+          <p class="pd-desc">Slow-simmered the traditional way until golden and aromatic — the finishing touch that makes any meal taste like home.</p>
           <div class="pd-facts">
-            <span class="pd-fact">Set daily</span>
-            <span class="pd-fact">Thick-set</span>
-            <span class="pd-fact">500g / 1kg</span>
+            <span class="pd-fact">Slow-simmered</span>
+            <span class="pd-fact">Bilona method</span>
+            <span class="pd-fact">500ml jar</span>
           </div>
-          <a class="btn btn-wa btn-sm magnetic" href="https://wa.me/916379550984?text=Hello%20Gokul%20Dairy%20Farm%2C%20I%27d%20like%20to%20order%20Curd.">
+          <a class="btn btn-wa btn-sm magnetic" href="https://wa.me/916379550984?text=Hello%20Gokul%20Dairy%20Farm%2C%20I%27d%20like%20to%20order%20Ghee.">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Z"/></svg>
             Order on WhatsApp
           </a>
@@ -577,33 +581,22 @@ ul{ list-style:none; }
       </div>
 
       <div class="pd-card reveal" data-reveal>
-        <div class="pd-media"><img src="assets/images/product-paneer.jpg" alt="Fresh soft paneer cottage cheese" loading="lazy"></div>
-        <div class="pd-body">
-          <h3>Paneer</h3>
-          <p class="pd-desc">Soft, fresh-pressed cottage cheese made in small batches daily — no preservatives, just milk and a little patience.</p>
-          <div class="pd-facts">
-            <span class="pd-fact">Fresh-pressed</span>
-            <span class="pd-fact">No preservatives</span>
-            <span class="pd-fact">200g / 500g</span>
-          </div>
-          <a class="btn btn-wa btn-sm magnetic" href="https://wa.me/916379550984?text=Hello%20Gokul%20Dairy%20Farm%2C%20I%27d%20like%20to%20order%20Paneer.">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Z"/></svg>
-            Order
-          </a>
+        <div class="pd-media placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 10h16l-1.5 9a2 2 0 0 1-2 1.7H7.5a2 2 0 0 1-2-1.7L4 10Z"/>
+            <path d="M8 10a4 4 0 0 1 8 0"/>
+            <path d="M12 3c1.5 1 2 2.2 2 3.5M12 3c-1.5 1-2 2.2-2 3.5"/>
+          </svg>
         </div>
-      </div>
-
-      <div class="pd-card reveal" data-reveal>
-        <div class="pd-media"><img src="assets/images/product-ghee.jpg" alt="Jar of golden, slow-simmered ghee" loading="lazy"></div>
         <div class="pd-body">
-          <h3>Ghee</h3>
-          <p class="pd-desc">Slow-simmered the traditional way  golden and aromatic — the finishing touch that makes any meal taste like home.</p>
+          <h3>Vegetables</h3>
+          <p class="pd-desc">Fresh-picked from our own fields the same morning — seasonal, chemical-free, and sold as it grows, not to a schedule.</p>
           <div class="pd-facts">
-            <span class="pd-fact">Slow-simmered</span>
-            <span class="pd-fact">Bilona method</span>
-            <span class="pd-fact">500ml jar</span>
+            <span class="pd-fact">Seasonal picks</span>
+            <span class="pd-fact">Chemical-free</span>
+            <span class="pd-fact">Mixed basket</span>
           </div>
-          <a class="btn btn-wa btn-sm magnetic" href="https://wa.me/916379550984?text=Hello%20Gokul%20Dairy%20Farm%2C%20I%27d%20like%20to%20order%20Ghee.">
+          <a class="btn btn-wa btn-sm magnetic" href="https://wa.me/916379550984?text=Hello%20Gokul%20Dairy%20Farm%2C%20I%27d%20like%20to%20order%20Vegetables.">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Z"/></svg>
             Order on WhatsApp
           </a>

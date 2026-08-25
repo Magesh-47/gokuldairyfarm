@@ -506,6 +506,9 @@ ul{ list-style:none; }
   transition:transform .7s var(--ease);
 }
 .product-card:hover .product-media img{ transform:scale(1.06); }
+.product-media.placeholder{ display:flex; align-items:center; justify-content:center; background:var(--sage-light); }
+.product-media.placeholder svg{ width:40%; height:40%; color:var(--sage-deep); transition:transform .7s var(--ease); }
+.product-card:hover .product-media.placeholder svg{ transform:scale(1.08); }
 .product-card h3{ font-size:1.1rem; font-weight:700; color:var(--forest); margin-bottom:6px; }
 .product-card p{ font-size:.86rem; color:var(--stone); line-height:1.55; }
 
@@ -841,19 +844,20 @@ ul{ list-style:none; }
         <p>Chilled within hours of milking — pure, creamy, and unadulterated.</p>
       </div>
       <div class="product-card reveal" data-reveal>
-        <div class="product-media"><img src="assets/images/product-curd.jpg" alt="Bowl of fresh homemade curd" loading="lazy"></div>
-        <h3>Curd</h3>
-        <p>Set the traditional way — thick, cool, and naturally tangy.</p>
-      </div>
-      <div class="product-card reveal" data-reveal>
-        <div class="product-media"><img src="assets/images/product-paneer.jpg" alt="Fresh soft paneer cottage cheese" loading="lazy"></div>
-        <h3>Paneer</h3>
-        <p>Soft, fresh-pressed cottage cheese, made in small batches daily.</p>
-      </div>
-      <div class="product-card reveal" data-reveal>
         <div class="product-media"><img src="assets/images/product-ghee.jpg" alt="Jar of golden, slow-simmered ghee" loading="lazy"></div>
         <h3>Ghee</h3>
         <p>Slow-simmered the traditional way — golden, rich, and aromatic.</p>
+      </div>
+      <div class="product-card reveal" data-reveal>
+        <div class="product-media placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 10h16l-1.5 9a2 2 0 0 1-2 1.7H7.5a2 2 0 0 1-2-1.7L4 10Z"/>
+            <path d="M8 10a4 4 0 0 1 8 0"/>
+            <path d="M12 3c1.5 1 2 2.2 2 3.5M12 3c-1.5 1-2 2.2-2 3.5"/>
+          </svg>
+        </div>
+        <h3>Vegetables</h3>
+        <p>Fresh-picked, seasonal baskets — grown chemical-free, straight from soil to table.</p>
       </div>
     </div>
     <div class="reveal" data-reveal style="text-align:center; margin-top:44px;">
